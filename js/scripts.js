@@ -1,29 +1,20 @@
 var converter = function(number) {
 
-  var numerals = ["I", "V", "X", "L", "C", "D", "M"]
-  // var numberArray = number.split("");
+  var numerals = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+  var numbers = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
   number = parseInt(number);
-  var numeralArray = [];
-  console.log(number.length);
+  var roman = "";
+  console.log(number);
 
-  if (number === 1) {
-    numeralArray.push("I");
-  } else if (number === 5) {
-    numeralArray.push("V");
-  } else if (number === 10) {
-    numeralArray.push("X");
-  }  else if (number === 50) {
-    numeralArray.push("L");
-  }  else if (number === 100) {
-    numeralArray.push("C");
-  }  else if (number === 500) {
-    numeralArray.push("D");
-  }  else if (number === 1000) {
-    numeralArray.push("M");
+  for (i = 0; i < 13; i++) {
+    while (number >= numbers[i] ) {
+      roman = roman + numerals[i];
+      number = number - numbers[i];
+    }
   }
-  return numeralArray;
-}
 
+  return roman;
+}
 
 $(document).ready(function() {
   $("form#numbers").submit(function(event) {
